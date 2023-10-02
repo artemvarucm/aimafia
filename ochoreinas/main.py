@@ -1,4 +1,13 @@
 # Ejercicio 2
 
 # Ocho reinas
-# Como guardar estado ->
+# Como guardar estado -> necesitamos guardar las posiciones y cuantas reinas hay
+# dos posibles opciones para estado
+# uno, como esta en search.py, usar la posicion de la tupla como columna
+# si tenemos el siguiente estado (N, x1, x9, x3, x4, x5, x49, x7, x8)
+# las reinas están en (x1, 0), (x9, 1), (x49, 5)...
+# dos, como mas sencillo, pero menos eficiente
+# si tenemos el siguiente estado (N, x1, y1, x7, y7...)
+# las reinas están en (x1, y1), (x7, y7)...
+# Si las posiciones son invalidas en ambos casos habria un -1
+# para ver q se ha alcanzado podemos o tener un contador en el estado, o ver si no hay ningun -1 en el estado

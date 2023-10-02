@@ -9,11 +9,13 @@ class EightPuzzle(Problem):
         super().__init__(initial, goal)
 
     def find_blank_square(self, state):
+        # donde esta el agujero
         """Return the index of the blank square in a given state"""
 
         return state.index(0)
 
     def actions(self, state):
+        # acciones posibles
         """ Return the actions that can be executed in the given state.
         The result would be a list, since there are only four possible actions
         in any given state of the environment """
