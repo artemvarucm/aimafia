@@ -19,32 +19,42 @@
 from ochoreinas import OchoReinas
 
 # 1
-state = (-1,-1,-1,-1,-1,-1,-1,-1)
+state = (1,3,0,7,4,2,5,-1)
 ep = OchoReinas(state)
+for action in ep.actions(state):
+    stateCopy = tuple() + state
+    print(ep.result(stateCopy, action))
 
 """
+REVIEW
+
 Empezamos con el estado (-1,-1,-1,-1), tablero vacio 
 Nos vamos a mover columna por columna.
-Es decir, elegimos una fila para la reina y cambiamos de columna(siguiente reina)
+Es decir, elegimos una fila para la reina y avanzamos de columna(siguiente reina)
 (-1,-1,-1,-1)
         (0,-1,-1,-1)                    
-            (0, 1,-1,-1)
             (0, 2,-1,-1)
                 (0, 2, 1,-1)
                 (0, 2, 3,-1)
             (0, 3,-1,-1)
         (1,-1,-1,-1)   
-            (1, 0,-1,-1)
-            (1, 2,-1,-1)
             (1, 3,-1,-1)              
         (2,-1,-1,-1)  
-            (2, 0,-1,-1)
-            (2, 1,-1,-1)
-            (2, 3,-1,-1)                     
+            (2, 0,-1,-1)                    
         (3,-1,-1,-1)
             (3, 0,-1,-1)
-            (3, 1,-1,-1)
-            (3, 2,-1,-1)
-    
+
+MÉTODO ACTION
+pre-condicion
+tablero valido(reinas no se pueden comer entre si)
+post-condicion
+devuelve la lista de las filas validas(donde no se puede comer) posibles para la columna actual 
+
+
+
+Comprobar objetivo -> llegamos a un estado sin "-1"s
+
+Coste de cada acción O(n^2) respecto a n = número de filas = 8
 
 """
+
