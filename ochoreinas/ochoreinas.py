@@ -1,15 +1,16 @@
+# Grupo 9 - Artem Vartanov y Daniel Coleto
 from search import Problem
 
 class OchoReinas(Problem):
-    tam = 8
-    # mejor empezar con 4x4, no 8x8
+    tam = 8 # el tablero es 8x8
     def __init__(self, initial):
         super().__init__(initial)
 
     def actions(self, state):
-        """In the leftmost empty column, try all non-conflicting rows."""
+        """Devuelve las filas donde se puede poner la reina, 
+        para la primera colmna vacia, empezando por el lado izquierdo """
         if state[-1] != -1:
-            return []  # All columns filled; no successors
+            return []  # Todas las columnas tienen asignadas una reina
         else:
             col = state.index(-1)
             availableRows = []
@@ -19,7 +20,7 @@ class OchoReinas(Problem):
             return availableRows
 
     def conflicted(self, state, row, col):
-        """Would placing a queen at (row, col) conflict with anything?"""
+        """Devuelve true si hay alguna reina que puede comer a la reina en esta posicion (row, col)"""
         # no hace falta revisar columnas
         conflict = False
         i = 0
@@ -31,20 +32,16 @@ class OchoReinas(Problem):
         return conflict
 
     def result(self, state, action):
-        col = state.index(-1)
-        if col >= 0:
-            return self.newTuple(state, col, action)
+        """Aplica al estado la accion correspondiente"""
+        if -1 in state:
+            col = state.index(-1)
+            # Como la tupla es inmutable, tenemos que convertirla a lista
+            # src: https://www.w3schools.com/python/gloss_python_change_tuple_item.asp#:~:text=Once%20a%20tuple%20is%20created,as%20it%20also%20is%20called.
+            state = list(state)
+            state[col] = action
+            state = tuple(state)
+        return state
 
-    def newTuple(self, state, col, row):
-        newTup = ()
-        for i in range(self.tam):
-            if (i == col):
-                tup1 = tuple([row])
-                newTup = newTup + tup1
-            else:
-                tup2 = tuple([state[i]])
-                newTup = newTup + tup2
-        return newTup
     def goal_test(self, state):
         # PRE: State es valido, reinas no se comen entre si
         if state[-1] == -1:  # si la ultima columna no esta rellenada no es valida

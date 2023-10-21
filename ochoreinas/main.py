@@ -17,6 +17,7 @@
 # ALGORITMO   N   TIME
 # BPA        8    0.02
 from ochoreinas import OchoReinas
+from search import breadth_first_tree_search, depth_first_tree_search, depth_limited_search, iterative_deepening_search
 
 # 1
 state = (1,3,0,7,4,2,5,-1)
@@ -57,4 +58,38 @@ Comprobar objetivo -> llegamos a un estado sin "-1"s
 Coste de cada acción O(n^2) respecto a n = número de filas = 8
 
 """
+
+#####
+    #
+#####
+    #
+#####
+def imprimirSolucion(solNode, algoritmo):
+    print()
+    print(f'Algoritmo {algoritmo}')
+    if solNode != None:
+        state = solNode.solution()
+        
+        print("-"*22)
+        print(f'{"Reina":<9}|{"Fila":>5}|{"Col":>5}|')
+        print("-"*22)
+        for i in range(len(state)):
+            print(f'{f"Reina {i+1}":<9}|{i:>5.0f}|{state[i]:>5.0f}|')
+            print("-"*22)
+    else:
+        print("No ha encontrado solucion")
+
+
+# anadir limite de 30 minutos
+state1 = tuple([-1]) * 8
+ep1 = OchoReinas(state1)
+solucionBPA = breadth_first_tree_search(ep1)
+imprimirSolucion(solucionBPA, "BPA")
+solucionBPP = depth_first_tree_search(ep1)
+imprimirSolucion(solucionBPA, "BPP")
+solucionBPL = depth_limited_search(ep1)
+imprimirSolucion(solucionBPL, "BPL")
+solucionBPI = iterative_deepening_search(ep1)
+imprimirSolucion(solucionBPI, "BPI")
+
 

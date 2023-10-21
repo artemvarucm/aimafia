@@ -1,3 +1,5 @@
+# Grupo 9 - Artem Vartanov y Daniel Coleto
+
 from search import Problem
 class EightPuzzle(Problem):
     """ The problem of sliding tiles numbered from 1 to 8 on a 3x3 board, where one of the
