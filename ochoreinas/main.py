@@ -73,8 +73,10 @@ def imprimirSolucion(solNode, algoritmo):
         print("-"*22)
         print(f'{"Reina":<9}|{"Fila":>5}|{"Col":>5}|')
         print("-"*22)
+        # FIXME: imprimir por filas ordenadamente
+        # state[i] es la fila, i es la columna
         for i in range(len(state)):
-            print(f'{f"Reina {i+1}":<9}|{i:>5.0f}|{state[i]:>5.0f}|')
+            print(f'{f"Reina {i+1}":<9}|{state[i]:>5.0f}|{i:>5.0f}|')
             print("-"*22)
     else:
         print("No ha encontrado solucion")
