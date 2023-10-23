@@ -20,11 +20,9 @@ from ochoreinas import OchoReinas
 from search import breadth_first_tree_search, depth_first_tree_search, depth_limited_search, iterative_deepening_search
 
 # 1
-state = (1,3,0,7,4,2,5,-1)
-ep = OchoReinas(state)
-for action in ep.actions(state):
-    stateCopy = tuple() + state
-    print(ep.result(stateCopy, action))
+ep = OchoReinas()
+for action in ep.actions(ep.initial):
+    print(ep.result(ep.initial, action))
 
 """
 REVIEW
@@ -68,7 +66,7 @@ def imprimirSolucion(solNode, algoritmo):
     print()
     print(f'Algoritmo {algoritmo}')
     if solNode != None:
-        state = solNode.solution()
+        state = solNode.state[1]
         
         print("-"*22)
         print(f'{"Reina":<9}|{"Fila":>5}|{"Col":>5}|')
@@ -76,15 +74,14 @@ def imprimirSolucion(solNode, algoritmo):
         # FIXME: imprimir por filas ordenadamente
         # state[i] es la fila, i es la columna
         for i in range(len(state)):
-            print(f'{f"Reina {i+1}":<9}|{state[i]:>5.0f}|{i:>5.0f}|')
+            print(f'{f"Reina {i+1}":<9}|{i:>5.0f}|{state[i]:>5.0f}|')
             print("-"*22)
     else:
         print("No ha encontrado solucion")
 
 
 # anadir limite de 30 minutos
-state1 = tuple([-1]) * 8
-ep1 = OchoReinas(state1)
+ep1 = OchoReinas()
 solucionBPA = breadth_first_tree_search(ep1)
 imprimirSolucion(solucionBPA, "BPA")
 solucionBPP = depth_first_tree_search(ep1)
