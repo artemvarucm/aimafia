@@ -18,4 +18,3 @@ print(ep.goal_test(ep.initial))
 # 4
 state = ep.result(state, "UP")
 print(ep.goal_test(state))
-print(list([-1])*8)
