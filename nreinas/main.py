@@ -9,6 +9,7 @@ import numpy as np
     #
     #
 def imprimir_tiempo(alg_tiempo_medio):
+    # alg_tiempo_medio es una lista con elementos de la siguiente forma
     # {"alg": "BPA", "tiempo": 0.444, "n": n}
     print()
     print("-"*30)
@@ -19,6 +20,7 @@ def imprimir_tiempo(alg_tiempo_medio):
         print("-"*30)
 
 def medir_tiempo(algoritmo, n, m):
+    # Devuelve la lista de m tiempos de ejecutar el algoritmo del parametro para el tamanio n
     listaTiempos = []
     for i in range(m):
         ep = NReinas(n)
@@ -28,14 +30,16 @@ def medir_tiempo(algoritmo, n, m):
         listaTiempos.append(tFin-tIni) # anadimos lo q tarda en ejecutar algoritmo(ep)
     return listaTiempos
 
-todasEjecuciones = []
 
+
+# Asocia a cada algoritmo su nombre espaniol reducido
 algoritmosConNombres = [
 {"name": "BPA","alg": breadth_first_tree_search},
 {"name": "BPP","alg": depth_first_tree_search},
 {"name": "BPL","alg": depth_limited_search},
 {"name": "BPI","alg": iterative_deepening_search}
 ]
+todasEjecuciones = []
 m = 20
 for n in range(4, 11):
     for a in algoritmosConNombres:
