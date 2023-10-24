@@ -43,4 +43,3 @@ for n in range(4, 11):
         todasEjecuciones.append({"alg": a["name"], "n": n, "tiempo": np.mean(tiempos)})
 
 imprimir_tiempo(todasEjecuciones)
-

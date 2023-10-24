@@ -1,9 +1,9 @@
 # Grupo 9 - Artem Vartanov y Daniel Coleto
 from search import Problem
 
-class NReinas(Problem):
-    def __init__(self, tam):
-        self.tam = tam
+class OchoReinas(Problem):
+    tam = 8 # el tablero es 8x8
+    def __init__(self):
         super().__init__([0, list([-1])*self.tam, list([False])*(self.tam*2-1), list([False])*(self.tam*2-1)])
 
     def actions(self, state):
