@@ -2,7 +2,6 @@
 
 # Ocho reinas
 from ochoreinas import OchoReinas
-from search import breadth_first_tree_search, depth_first_tree_search, depth_limited_search, iterative_deepening_search
 
 # Apartado d
 ep = OchoReinas()

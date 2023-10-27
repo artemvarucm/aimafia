@@ -13,21 +13,22 @@ def imprimirSolucion(solNode, algoritmo):
     print()
     print(f'Algoritmo {algoritmo}')
     if solNode != None:
-        # solNode.solution() no es valido para esto
+        # solNode.solution() no es valido para esto, necesitamos tenerlo ordenado por filas
         state = solNode.state[1]
         
-        print("-"*22)
-        print(f'{"Reina":<9}|{"Fila":>5}|{"Col":>5}|')
-        print("-"*22)
+        print("-"*23)
+        print(f'|{"Reina":<9}|{"Fila":>5}|{"Col":>5}|')
+        print("-"*23)
         # state[i] es la columna, i es la fila
         for i in range(len(state)):
-            print(f'{f"Reina {i+1}":<9}|{i:>5.0f}|{state[i]:>5.0f}|')
-            print("-"*22)
+            print(f'|{f"Reina {i+1}":<9}|{i:>5.0f}|{state[i]:>5.0f}|')
+            print("-"*23)
     else:
         print("No ha encontrado solucion")
 
-
+# Planteamos problema
 ep1 = OchoReinas()
+# Resolvemos problema con cada algoritmo
 solucionBPA = breadth_first_tree_search(ep1)
 imprimirSolucion(solucionBPA, "BPA")
 solucionBPP = depth_first_tree_search(ep1)
